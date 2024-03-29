@@ -39,7 +39,7 @@ This project is a social media website called Tarmeez. It allows users to regist
 This project is developed by [Ahmed Safwat].
 
 ### Acknowledgments
-Special thanks to [anyone you want to acknowledge].
+Special thanks to [https://twitter.com/YarHmm].
 
 ### License
 This project is licensed under the [MIT License] License.
