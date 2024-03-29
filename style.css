@@ -1,0 +1,117 @@
+body {
+  background: #4e54c8; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #8f94fb,
+    #4e54c8
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #8f94fb,
+    #4e54c8
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+#alert {
+  position: fixed;
+  right: 30%;
+  top: 1.5%;
+  width: 40%;
+  font-weight: 700;
+  padding-bottom: 20px;
+  z-index: 99999;
+}
+
+#post-body-input {
+  resize: none;
+}
+
+.create-post-btn {
+  position: fixed;
+  right: 5%;
+  bottom: 10%;
+  width: 70px;
+  height: 70px;
+  font-size: 30px;
+  z-index: 9;
+  background-color: cornflowerblue;
+  border: 3px solid white;
+  color: white;
+  transition: all 0.3s;
+}
+
+.create-post-btn:hover {
+  background-color: #4e54c8;
+  transform: rotate(360deg);
+}
+
+.nav-data {
+  justify-content: space-between;
+}
+
+.user-data .profile_image {
+  width: 35px;
+  height: 35px;
+}
+
+.user-data .username {
+  margin-right: 8px;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.profile_image {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+}
+
+.comment-profile_image {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+#user-info-left {
+  align-items: center;
+  gap: 10px;
+}
+
+.username-email {
+  width: 80%;
+  flex-direction: column;
+}
+
+.user-info .card-body {
+  display: flex;
+}
+
+.comment_text {
+  margin-left: 10px;
+}
+
+.comments hr {
+  margin: 0px 8px;
+}
+
+hr {
+  margin: 5px 0px;
+}
+
+.gray {
+  color: darkgrey;
+  margin-bottom: 0;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.tag {
+  font-size: 12px;
+}

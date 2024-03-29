@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Final Project</title>
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="./node_modules/axios/dist/axios.min.js"></script>
+  <!-- load all Font Awesome v6 styles -->
+  <link href="./fontawesome-free-6.5.1-web/css/all.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./node_modules/bootstrap-icons/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!-- =============MODALS================== -->
+
+  <!-- ===LOGIN MODAL=== -->
+  <div class="modal fade" id="login-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Login</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <!-- <label for="user-name" class="col-form-label">UserName:</label> -->
+              <input type="text" class="form-control" id="username-input" placeholder="Username">
+            </div>
+            <div class="mb-3">
+              <!-- <label for="password" class="col-form-label">Password:</label> -->
+              <input type="password" class="form-control" id="password-input" placeholder="Password">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-success" onclick="loginFunction()">Login</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--\\ LOGIN MODAL //-->
+
+  <!-- === REGISTER MODAL === -->
+  <div class="modal fade" id="register-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Register a new User</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <input type="text" class="form-control" id="register-name-input" placeholder="Name">
+            </div>
+            <div class="mb-3">
+              <!-- <label for="user-name" class="col-form-label">UserName:</label> -->
+              <input type="text" class="form-control" id="register-username-input" placeholder="Username">
+            </div>
+            <div class="mb-3">
+              <input type="password" class="form-control" id="register-password-input" placeholder="Password">
+            </div>
+            <!-- <div class="mb-3">
+              <input type="email" class="form-control" id="register-email-input" placeholder="Email">
+            </div> -->
+            <div class="mb-3">
+              <label for="register-image-input" class="col-form-label">Profile Image</label>
+              <input type="file" class="form-control" id="register-image-input">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" onclick="registerFunction()">Register</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--\\ === REGISTER MODAL === //-->
+
+  <!-- === CREATE POST MODAL === -->
+  <div class="modal fade" id="create-post-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="post-modal-title"></h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <input type="text" class="form-control" id="post-title-input" placeholder="Post Tittle">
+              <input type="hidden" class="form-control" id="post-id-input">
+            </div>
+            <div class="mb-3">
+              <textarea class="form-control" id="post-body-input" placeholder="What are you thinking?..."></textarea>
+            </div>
+            <div class="mb-3">
+              <label for="post-image-input" class="col-form-label">Image</label>
+              <input type="file" class="form-control" id="post-image-input">
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" id="post-button" class="btn btn-primary"
+            onclick="createEditPostFunction()">Post</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--\\ === CREATE POST MODAL === //-->
+
+  <!-- === DELETE POST MODAL === -->
+  <div class="modal fade" id="delete-post-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="post-modal-title">
+            Are you sure you want to delete this post?
+          </h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="button" id="post-button" class="btn btn-danger" onclick="deletePostFunction()">Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--\\ === DELETE POST MODAL === //-->
+
+  <!--\\ ================MODALS================ //-->
+
+  <!-- =============ALERT================== -->
+  <div id="alert"></div>
+  <!--\\ =============ALERT================== //-->
+
+  <!-- ============= create-post ================== -->
+  <div class="create-post"></div>
+  <!--\\ ============= create-post ================== //-->
+
+  <!-- NAVIGATION BAR CONT -->
+  <div class="container-md">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary shadow rounded-bottom mb-5">
+      <div class="container-fluid pt-3">
+
+        <a class="navbar-brand" href="index.html">Tarmeez</a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+          aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+            <li class="nav-item">
+              <a class="nav-link active" aria-current="page" href="index.html">Home</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="profile.html">Profile</a>
+            </li>
+          </ul>
+
+          <div class="nav-data d-flex">
+            <div class="user-data"></div>
+            <div class="buttons d-flex"></div>
+          </div>
+
+        </div>
+    </nav>
+  </div>
+  <!--\\ NAVIGATION BAR CONT //-->
+
+
+  <div class="container-md">
+    <!-- posts -->
+    <div class="posts">
+      <!-- post -->
+      <!-- <div class="post card shadow-lg my-3">
+        <div class="card-header">
+          <img class="profile_image border border-2" src="./images/user-img/user-img-3.jpg" alt="profile-image">
+          <b>Gailan Helmy</b>
+        </div>
+
+        <div class="card-body" onclick="postClicked()" style="cursor: pointer;">
+          <img class="w-100 border border-2 rounded"
+            src="./images/geometric-vintage-retro-background-ai-generated-image.jpg" alt="post-image">
+
+          <h5 class="card-title mt-2">Special title treatment</h5>
+
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+
+          <h6 class="gray mt-1">2 min ago</h6>
+          <hr>
+          <div class="footer">
+            <div class="comments d-flex align-items-center">
+              <i class="fa-solid fa-pen-clip mx-2"></i>
+              <h6>
+                (<span class="comments_number">5</span>)Comments
+              </h6>
+            </div>
+            <div class="tags">
+              <button type="button" class="tag btn btn-secondary">Sport</button>
+              <button type="button" class="tag btn btn-secondary">Cook</button>
+              <button type="button" class="tag btn btn-secondary">Tech</button>
+            </div>
+          </div>
+        </div>
+      </div> -->
+      <!--\\ post // -->
+
+    </div>
+    <!--\\ posts //-->
+  </div>
+  <script src="./main.js"></script>
+  <script src="./index.js"></script>
+</body>
+
+</html>
