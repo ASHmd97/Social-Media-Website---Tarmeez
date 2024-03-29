@@ -1,8 +1,9 @@
 ```markdown
 ## Social Media Website - Tarmeez
 
-This project is a social media website called Tarmeez. It allows users to register, log in, create posts,
- edit posts, delete posts, view profiles, and interact with other users by commenting on their posts.
+This project is a social media website called Tarmeez.
+ It allows users to register, log in, create posts, edit posts, delete posts, view profiles
+ and interact with other users by commenting on their posts.
 
 ### Technologies Used
 - HTML
